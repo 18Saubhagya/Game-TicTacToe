@@ -103,6 +103,15 @@ int main()
             second=name2;
         else
             second=name1;
+        int i,j;
+        for(i=0;i<3;i++)
+        {
+            for(j=0;j<3;j++)
+            {
+                    cout<<"- ";
+            }
+            cout<<"\n";
+        }
         TicTacToe game(first,second);
         do
         {
