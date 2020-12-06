@@ -6,12 +6,12 @@ class TicTacToe
     string player1,player2;
     char grid[3][3];
     public:
-    TicTacToe(string name1,string name2)
+    TicTacToe(string name1,string name2,char a,char b)
     {
         player1=name1;
         player2=name2;
-        input1='X';
-        input2='O';
+        input1=a;
+        input2=b;
         for(int i=0;i<3;i++)
         {
             for(int j=0;j<3;j++)
@@ -83,13 +83,14 @@ class TicTacToe
 int main()
 {
     string choice,name1,name2,first,chance,second,winner;
+    char i1,i2;
     int turn=1,flag=0,Check;
     cout<<"***********************TIC TAC TOE***********************"<<endl;
     do
     {
-        cout<<"Enter a Name for Player A: "<<endl;
+        cout<<"Enter a Name for Player X: "<<endl;
         cin>>name1;
-        cout<<"Enter a Name for Player B: "<<endl;
+        cout<<"Enter a Name for Player O: "<<endl;
         cin>>name2;
         cout<<"Who Plays first, "<<name1<<" or "<<name2<<endl;
         cin>>first;
@@ -99,10 +100,16 @@ int main()
             cout<<"Who Plays first, "<<name1<<" or "<<name2<<endl;
             cin>>first;
         }
-        if(first==name1)
+        if(first==name1){
+            i1='X';
+            i2='O';
             second=name2;
-        else
+        }
+        else{
+            i1='O';
+            i2='X';
             second=name1;
+        }
         int i,j;
         for(i=0;i<3;i++)
         {
@@ -112,7 +119,7 @@ int main()
             }
             cout<<"\n";
         }
-        TicTacToe game(first,second);
+        TicTacToe game(first,second,i1,i2);
         do
         {
             if(turn%2==1)
@@ -129,9 +136,9 @@ int main()
             {
                 char move;
                 if(turn%2==1)
-                    move='X';
+                    move=i1;
                 else
-                    move='O';
+                    move=i2;
                 int result=game.check(move);
                 if(result==1)
                 {
